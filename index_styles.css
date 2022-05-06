@@ -1,0 +1,90 @@
+html {
+    margin:0;
+    font-size:120%
+}
+
+body {
+    background-color:white;
+    color:black;
+    font-family:Linux Biolinum G, CMU Sans Serif, sans-serif;
+    max-width:800px;
+    margin:auto;
+    margin-top:0;
+    border: solid black;
+    border-width:0 thin;
+}
+
+@media (min-width: 801px) {
+    body {
+        background-image: url("Marbled.webp");
+	background-size: cover;
+    }
+}
+
+@media print {
+    body {
+	border: none !important;
+    }
+}
+
+main {
+    padding:0 20px 20px;
+    background-color:white;
+}
+
+header {
+    text-align:center;
+    background-color:white;
+    padding:20px 20px 0;
+}
+
+.up_arrow {
+    font-weight:normal;
+    vertical-align: top;
+}
+
+a {
+    text-decoration:none;
+    color: #7B0000;
+}
+
+#title_container > h1 {
+    margin: 0;
+}
+
+#title_container {
+    padding-bottom:42px;
+    border-bottom: thick double black;
+}
+
+h2 {
+    font-size:1.35em;
+}
+
+li {
+    margin: 5px 0;
+}
+
+#top_button {
+    padding:10px;
+    border: thin solid black;
+    font-weight: bold;
+    font-size: medium;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+}
+
+#alphabet_navigator {
+    text-align:center;
+    padding:38.4px 0;
+    letter-spacing:10px;
+    
+}
+
+#alphabet_navigator > a {
+    font-size:1.5em;
+    font-weight:bold;
+}
