@@ -4,13 +4,31 @@ font-size:120%
 }
 
 body {
-background-color:white;
-color:black;
-font-family:Linux Biolinum G, CMU Sans Serif, sans-serif;
-max-width:800px;
-margin:auto;
-margin-top:0;
-background-image: url("Marbled.webp")
+    background-color:white;
+    color:black;
+    font-family:Linux Biolinum G, CMU Sans Serif, sans-serif;
+    max-width:800px;
+    margin:auto;
+    margin-top:0;
+    border: solid black;
+    border-width:0 thin;
+}
+
+@media (min-width: 801px) {
+    body
+    {
+        background-image: url("Marbled.webp");
+	background-size: cover;
+    }
+}
+
+@media print {
+    body {
+	border: none !important;
+    }
+    a {
+	display: none;
+    }
 }
 
 main {
