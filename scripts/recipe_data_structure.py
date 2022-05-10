@@ -29,8 +29,8 @@ oxtail_recipe = {
 def create_recipe_html(recipe_data):
     
     # open recipe template
-    recipe_template_file = open("./recipes/recipe.html","r")
-    
+    recipe_template_file = open("../recipes/recipe_template.html","r")
+
     # copy recipe template text into memory and close template
     recipe_template_text = recipe_template_file.read()
     recipe_template_file.close()
@@ -74,6 +74,8 @@ def create_recipe_html(recipe_data):
 
     # write the new recipe to an html file
     new_recipe_file_name = re.sub('\s', '-',f"{recipe_name}".lower()) + ".html"
-    new_recipe_file = open(f"./recipes/{new_recipe_file_name}", "w")
+    new_recipe_file = open(f"../recipes/{new_recipe_file_name}", "w")
     new_recipe_file.write(recipe_template_text)
     new_recipe_file.close()
+
+create_recipe_html(oxtail_recipe)
