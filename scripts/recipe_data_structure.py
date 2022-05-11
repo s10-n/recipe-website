@@ -26,7 +26,20 @@ oxtail_recipe = {
     "directions": ["Mix the dry rub ingredients in a bowl, and coat the oxtail. Once the oxtail is completely coated, dump the contents of the bowl into a plastic bag or other airtight container and refrigerate overnight.","Preheat the oven to 350. Melt the butter and olive oil in a dutch oven.","Add the oxtail and brown it on all sides. There should be a nice brown colour in the botton of the casserole dish."], #list of strings
 }
 
-def create_recipe_html(recipe_data):
+
+# What happens when a new recipe is submitted?
+
+# create a new HTML page with the recipe data in the /recipes directory
+
+# update index.html by adding a link to the new recipe under the correct header in relative alphabetical order
+
+# for each tag associated with the recipe:
+# if a tag page exists, add the recipe to the tag page in relative alphabetical order
+# if a tag page doesn't exist, create it and add the recipe to it
+
+# for any new tag pages created, update index.html and add them to the tag cloud
+
+def create_recipe_html(recipe_data): # create new HTML page
     
     # open recipe template
     recipe_template_file = open("../recipes/recipe_template.html","r")
