@@ -1,5 +1,3 @@
-import re
-
 recipe = {
     "recipe_name": "", #string
     "tags":["","",""], #list of strings
@@ -13,82 +11,48 @@ recipe = {
     "directions": ["","",""], #list of strings
 }
 
-oxtail_recipe = {
-    "recipe_name": "New Jamaican Oxtail Stew", #string
-    "tags":["jamaican","oxtail","stew"], #list of strings
-    "serves": "4", #string
-    "prep_time": "12 hours", #string
-    "cook_time": "4 hours", #string
-    "image_url": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fafricanbites.com%2Fwp-content%2Fuploads%2F2015%2F11%2FIMG_6154-2.jpg&f=1&nofb=1", #path to image
-    "recipe_description": "Kirsten's aunt gave me this recipe, and it's my go-to for a delectable warm weather feast. I've braised pork shoulder using the same directions and it's turned out wonderfully.", #string
+recipes = [
+    {"recipe_name": "Jamaican Oxtail Stew", #string
+     "tags":["jamaican","oxtail","stew"], #list of strings
+     "serves": "4", #string
+     "prep_time": "12 hours", #string
+     "cook_time": "4 hours", #string
+     "recipe_description": "Kirsten's aunt gave me this recipe, and it's my go-to for a delectable warm weather feast. I've braised pork shoulder using the same directions and it's turned out wonderfully.", #string
     "tips": "Serve with Jamaican rice and cornbread. Navy beans or butter beans can be used.", #string
     "ingredients": ["Dry rub", ["1 tbsp salt","1 tbsp allspice","1 tbsp smoked paprika"],"Stew",["3 lbs oxtail","4 tbsp butter","3 large carrots, chopped"]], #string for subsection, list of strings for ingredients
     "directions": ["Mix the dry rub ingredients in a bowl, and coat the oxtail. Once the oxtail is completely coated, dump the contents of the bowl into a plastic bag or other airtight container and refrigerate overnight.","Preheat the oven to 350. Melt the butter and olive oil in a dutch oven.","Add the oxtail and brown it on all sides. There should be a nice brown colour in the botton of the casserole dish."], #list of strings
-}
-
-
-# What happens when a new recipe is submitted?
-
-# create a new HTML page with the recipe data in the /recipes directory
-
-# update index.html by adding a link to the new recipe under the correct header in relative alphabetical order
-
-# for each tag associated with the recipe:
-# if a tag page exists, add the recipe to the tag page in relative alphabetical order
-# if a tag page doesn't exist, create it and add the recipe to it
-
-# for any new tag pages created, update index.html and add them to the tag cloud
-
-def create_recipe_html(recipe_data): # create new HTML page
-    
-    # open recipe template
-    recipe_template_file = open("../recipes/recipe_template.html","r")
-
-    # copy recipe template text into memory and close template
-    recipe_template_text = recipe_template_file.read()
-    recipe_template_file.close()
-    
-    # create variables from recipe data
-    recipe_name = recipe_data["recipe_name"]
-    tags = ""
-    for tag in recipe_data["tags"]:
-        tags += f"""<a href='../tags/{tag}.html'>{tag}</a>, """
-    serves = recipe_data["serves"]
-    prep_time = recipe_data["prep_time"]
-    cook_time = recipe_data["cook_time"]
-    image_url = recipe_data["image_url"]
-    recipe_description = recipe_data["recipe_description"]
-    tips = recipe_data["tips"]
-    ingredients = ""
-    for ingredient in recipe_data["ingredients"]:
-        if isinstance(ingredient, str):
-            ingredients += f"""<h3>{ingredient}</h3>"""
-        elif isinstance(ingredient, list):
-            ingredients += """<ul class="ingredient_list"</ul>"""
-            for individual_ingredient in ingredient:
-                ingredients += f"""<li><label><input type="checkbox">{individual_ingredient}</label></li>"""
-            ingredients += "</ul>"
-    directions = "<ol>"
-    for step in recipe_data["directions"]:
-        directions += f"""<li>{step}</li>"""
-    directions += "</ol>"
-    
-    # replace variables in recipe template with recipe_data values
-    recipe_template_text=re.sub("{recipe_name}",recipe_name,recipe_template_text)
-    recipe_template_text=re.sub("{tags}",tags,recipe_template_text)
-    recipe_template_text=re.sub("{serves}",serves,recipe_template_text)
-    recipe_template_text=re.sub("{prep_time}",prep_time,recipe_template_text)
-    recipe_template_text=re.sub("{cook_time}",cook_time,recipe_template_text)
-    recipe_template_text=re.sub("{image_url}",image_url,recipe_template_text)
-    recipe_template_text=re.sub("{recipe_description}",recipe_description,recipe_template_text)
-    recipe_template_text=re.sub("{tips}",tips,recipe_template_text)
-    recipe_template_text=re.sub("{ingredients}",ingredients,recipe_template_text)
-    recipe_template_text=re.sub("{directions}",directions,recipe_template_text)
-
-    # write the new recipe to an html file
-    new_recipe_file_name = re.sub('\s', '-',f"{recipe_name}".lower()) + ".html"
-    new_recipe_file = open(f"../recipes/{new_recipe_file_name}", "w")
-    new_recipe_file.write(recipe_template_text)
-    new_recipe_file.close()
-
-create_recipe_html(oxtail_recipe)
+    }, 
+    {"recipe_name": "Villainous Mac & Cheeze", #string
+     "tags":["macaroni","cheese","pasta","baked","casserole"], #list of strings
+     "serves": "4", #int
+     "prep_time": "15 minutes", #string
+     "cook_time": "1 hour", #string
+     "image_url": "", #path to image
+     "recipe_description": """"Macaroni and Cheese is an ol' time classic but Villainous Mac & Cheeze was concocted by wifey about three years ago. It took a couple years to perfect and you must follow the recipe exactly or else. Now Villainous Mac & Cheeze has become an MF family favorite, perfect for any holiday or special meal... enjoy and don't forget your potholderz..." - MF the Super Villain""", #string
+     "tips": "", #string
+     "ingredients": [["5 cups cooked macaroni (approx. 4 cups uncooked)","1 stick butter","1 cup bread crumbs","1/2 tsp salt","1/2 tsp pepper","1 tbsp sugar","1 minced fresh garlic clove","2 cups milk","1 8oz package of Colby/Monterey Jack cheese", "4 cups shredded cheddar cheese"]], #string for subsection, list of strings for ingredients
+     "directions": ["Cook the macaroni until done as usual, adding sugar and garlic to water. Do not overcook it. Drain macaroni in strainer.","Place macaroni, butter, salt, pepper, milk, Colby/jack cheese, and 3 cups of cheddar cheese in an oven-safe pot. Boil slowly, and when done, add bread crumbs.","Cover everything with aluminum foil and cook for 45 minutes at 350.","Uncover and add extra cup of cheddar cheese across the top. Bake uncovered for another 15 minutes."], #list of strings
+    },
+    {"recipe_name": "AAAAnother", #string
+     "tags":["macaroni","cheese","pasta","baked","casserole"], #list of strings
+     "serves": "4", #int
+     "prep_time": "15 minutes", #string
+     "cook_time": "1 hour", #string
+     "image_url": "", #path to image
+     "recipe_description": """"Macaroni and Cheese is an ol' time classic but Villainous Mac & Cheeze was concocted by wifey about three years ago. It took a couple years to perfect and you must follow the recipe exactly or else. Now Villainous Mac & Cheeze has become an MF family favorite, perfect for any holiday or special meal... enjoy and don't forget your potholderz..." - MF the Super Villain""", #string
+     "tips": "", #string
+     "ingredients": [["5 cups cooked macaroni (approx. 4 cups uncooked)","1 stick butter","1 cup bread crumbs","1/2 tsp salt","1/2 tsp pepper","1 tbsp sugar","1 minced fresh garlic clove","2 cups milk","1 8oz package of Colby/Monterey Jack cheese", "4 cups shredded cheddar cheese"]], #string for subsection, list of strings for ingredients
+     "directions": ["Cook the macaroni until done as usual, adding sugar and garlic to water. Do not overcook it. Drain macaroni in strainer.","Place macaroni, butter, salt, pepper, milk, Colby/jack cheese, and 3 cups of cheddar cheese in an oven-safe pot. Boil slowly, and when done, add bread crumbs.","Cover everything with aluminum foil and cook for 45 minutes at 350.","Uncover and add extra cup of cheddar cheese across the top. Bake uncovered for another 15 minutes."], #list of strings
+    },
+    {"recipe_name": "Recipe 3", #string
+     "tags":["macaroni","cheese","pasta","baked","casserole"], #list of strings
+     "serves": "4", #int
+     "prep_time": "15 minutes", #string
+     "cook_time": "1 hour", #string
+     "image_url": "", #path to image
+     "recipe_description": """"Macaroni and Cheese is an ol' time classic but Villainous Mac & Cheeze was concocted by wifey about three years ago. It took a couple years to perfect and you must follow the recipe exactly or else. Now Villainous Mac & Cheeze has become an MF family favorite, perfect for any holiday or special meal... enjoy and don't forget your potholderz..." - MF the Super Villain""", #string
+     "tips": "", #string
+     "ingredients": [["5 cups cooked macaroni (approx. 4 cups uncooked)","1 stick butter","1 cup bread crumbs","1/2 tsp salt","1/2 tsp pepper","1 tbsp sugar","1 minced fresh garlic clove","2 cups milk","1 8oz package of Colby/Monterey Jack cheese", "4 cups shredded cheddar cheese"]], #string for subsection, list of strings for ingredients
+     "directions": ["Cook the macaroni until done as usual, adding sugar and garlic to water. Do not overcook it. Drain macaroni in strainer.","Place macaroni, butter, salt, pepper, milk, Colby/jack cheese, and 3 cups of cheddar cheese in an oven-safe pot. Boil slowly, and when done, add bread crumbs.","Cover everything with aluminum foil and cook for 45 minutes at 350.","Uncover and add extra cup of cheddar cheese across the top. Bake uncovered for another 15 minutes."], #list of strings
+    }
+]

@@ -28,6 +28,9 @@ body {
     a {
 	display: none;
     }
+    #tags {
+	display:none;
+    }
 }
 
 main {
